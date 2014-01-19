@@ -1,4 +1,12 @@
 Jcastle2::Application.routes.draw do
+  get "castle/index"
+  get "castle/show"
+  get "castle/edit"
+  get "castle/update"
+  get "castle/new"
+  get "castle/create"
+  resources :castles
+  
   root :to => "home#index"
 #  devise_for :users, :controllers => {:registrations => "registrations"}
 #  devise_for :users
@@ -16,5 +24,9 @@ Jcastle2::Application.routes.draw do
 #  end
 
   resources :users
+
+  namespace :admin do
+  	resources :castles
+	end
 
 end

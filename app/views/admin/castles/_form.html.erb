@@ -1,0 +1,12 @@
+<%= simple_form_for [:admin, @castle] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  <%= f.input :castle_name_en %>
+  <%= f.input :castle_name_ja %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

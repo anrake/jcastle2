@@ -1,0 +1,2 @@
+module Admin::CastleHelper
+end
