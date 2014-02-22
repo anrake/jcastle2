@@ -1,4 +1,13 @@
 Jcastle2::Application.routes.draw do
+<<<<<<< HEAD
+=======
+  get "castle/index"
+  get "castle/show"
+  get "castle/edit"
+  get "castle/update"
+  get "castle/new"
+  get "castle/create"
+>>>>>>> e1055ad651aab841ba4bd0a57de8ea13256ba552
   resources :castles
   
   root :to => "home#index"

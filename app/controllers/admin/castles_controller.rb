@@ -1,7 +1,10 @@
 class Admin::CastlesController < ApplicationController
   before_filter :authenticate_user!
+<<<<<<< HEAD
   before_action :set_castle, only: [:show, :edit, :update, :destroy]
 
+=======
+>>>>>>> e1055ad651aab841ba4bd0a57de8ea13256ba552
 
   def index
   	authorize! :index, @user, :message => 'Not authorized as an administrator.'
@@ -20,7 +23,11 @@ class Admin::CastlesController < ApplicationController
   # PATCH/PUT /castles/1.json
   def update
     respond_to do |format|
+<<<<<<< HEAD
       if @castle.update(castle_params)
+=======
+      if @castle.update(params)
+>>>>>>> e1055ad651aab841ba4bd0a57de8ea13256ba552
         format.html { redirect_to admin_castle_path(@castle), notice: 'Castle was successfully updated.' }
         format.json { head :no_content }
       else
@@ -30,6 +37,7 @@ class Admin::CastlesController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_castle
@@ -40,5 +48,7 @@ class Admin::CastlesController < ApplicationController
     def castle_params
       params[:castle]
     end
+=======
+>>>>>>> e1055ad651aab841ba4bd0a57de8ea13256ba552
 
 end
