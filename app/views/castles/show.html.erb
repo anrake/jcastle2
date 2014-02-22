@@ -1,0 +1,97 @@
+<p id="notice"><%= notice %></p>
+
+<%=h @castle.castle_name_en %>
+<%=h @castle.castle_name_ja %>
+
+<table class="profile_table">
+	<tr>
+		<td class="table_title">Founder</td>
+		<td><%= h @castle.founder || '' %></td>
+	</tr>
+	<tr>
+		<td class="table_title">Year</td>
+		<td><%= h @castle.year || '' %></td>
+	</tr>
+	<tr>
+		<td class="table_title">Type</td>
+		<td><a href="/castle/browse/type/<%= h @castle.castle_type %>"><%= h @castle.castle_type %></a></td>
+	</tr>
+	<tr>
+		<td class="table_title">Condition</td>
+		<td><a href="/castle/browse/condition/<%= h @castle.condition %>"><%= h @castle.condition.gsub('_',' ') %></a></td>
+	</tr>
+	<% if @castle.castle_name_alt? %>
+		<tr>
+			<td class="table_title">Alternate Name</td>
+			<td colspan="2"><%= h @castle.castle_name_alt %></td>
+		</tr>
+	<% end %>
+	<% if @castle.year_reconstructed? %>
+		<tr>
+			<td class="table_title">Reconstructed</td>
+			<td colspan="2"><%= h @castle.year_reconstructed %></td>
+	</tr><% end %>
+	<% if @castle.structure? %>
+		<tr>
+			<td class="table_title">Structure</td>
+			<td colspan="2"><%= h @castle.structure %></td>
+		</tr>
+	<% end %>
+		<tr>
+			<td class="table_title">Admin's Rating</td>
+			<td colspan="2">
+				<% if @castle.rating? %>
+				<a href="/castle/browse/rating/<%= h @castle.rating %>"><% @castle.rating.to_i.times do |s| %> <%= '&#9733;' %> <% end %> <% (5 - @castle.rating.to_i).times do |s|%> <%= "&#9734;" %> <% end %></a>
+				<% end %>
+			</td>
+		</tr>
+		<% if @castle.historical_value.to_s.length > 0 %>
+			<tr>
+				<td class="table_title">Historical Site</td>
+			<td colspan="2">
+				<a href="/castle/browse/histval/<%= h @castle.historical_value %>"><%= h @castle.historical_value.gsub('_',' ') %></a>
+			</td>
+			</tr>
+		<% end %>
+		<tr>
+			<td class="table_title">Location</td>
+			<td colspan="2"><% if @castle.location? %><a href="/castle/browse/pref/<%= h @castle.prefecture %>"><%= h @castle.location %></a><% end %></td>
+		</tr>
+		<tr>
+			<td class="table_title">Access</td>
+			<td colspan="2"><% if @castle.access? %><%= h @castle.access %><% end %></td>
+		</tr>
+		<% if @castle.visited? %>
+		<tr>
+			<td class="table_title">Visited</td>
+			<td colspan="2"><%= h @castle.visited %></td>
+		</tr>
+		<% end %>
+		<% if @castle.visitorInfo? %>
+		<tr>
+			<td class="table_title">Visitor Info.</td>
+			<td colspan="2"><%= h @castle.visitorInfo %><% if @castle.timeRequired? %>
+			 | <i>Time Required:</i> <%= h @castle.timeRequired %><% end %></td>
+		</tr>
+		<% end %>
+		<tr>
+			<td class="table_title">Notes</td>
+			<td colspan="2"><% if @castle.approved? %><%= @castle.notes %>
+			<% else %><%= h @castle.notes %><% end %>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_title">History</td>
+			<td colspan="2"><% if @castle.history? %>
+				<% if @castle.approved? %>
+				<%= @castle.history %>
+				<% else %>
+				<%= h @castle.history %>
+				<% end %>
+				<% end %>
+			</td>
+		</tr>
+</table>
+
+<%= link_to 'Edit', edit_castle_path(@castle) %> |
+<%= link_to 'Back', castles_path %>

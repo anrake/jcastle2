@@ -1,0 +1,45 @@
+<h1>Listing castles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>APP</th>
+      <th>ID</th>
+      <th>E Name</th>
+      <th>J Name</th>
+      <th>Pics</th>
+      <th>value</th>
+      <th>top100</th>
+      <th>ICP</th>
+      <th>NT</th>
+      <th>Period</th>
+      <th><i class="fi-eye"></i></th>
+      <th><i class="fi-page-edit"></i></th>
+      <th><i class="fi-trash"></i></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @castles.each do |castle| %>
+      <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+        <td><%= castle.approved %></td>
+        <td><%=h castle.id %></td>
+        <td><%=h castle.castle_name_en %></td>
+        <td><%=h castle.castle_name_ja %></td>
+        <td> # </td>
+        <td><%=h castle.historical_value %></td>
+        <td><%=h castle.top_100 %></td>
+        <td><%=h castle.has_ICP %></td>
+        <td><%=h castle.has_NT %></td>
+        <td><%=h castle.period %></td>
+        <td><%= link_to admin_castle_path(castle) do %><i class="fi-eye"></i><% end %> </td>
+        <td><%= link_to edit_admin_castle_path(castle) do %><i class="fi-page-edit"></i><% end %></td>
+        <td><%= link_to castle, method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fi-trash"> </i><% end %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Castle', new_castle_path %>

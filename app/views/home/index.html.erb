@@ -1,9 +1,24 @@
 
 <% if user_signed_in? %>
-logged in as <%= current_user.name %>
+<h3>logged in as <%= current_user.name %></h3>
 <% end %> 
 
-<h3>Home</h3>
+Links
+
+<table>
+	<tr><td>Front</td><td>Admin</td></tr>
+	<tr>
+		<td><%= link_to "Castles Index", castles_path %></td>
+		<td><%= link_to "Castles Admin Index", admin_castles_path %></td>
+	</tr>
+</table>
+
+<ul>
+</ul>
+
+Users
+<ul>
 <% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+  <li>User: <%=link_to user.name, user %></li>
 <% end %>
+</ul>

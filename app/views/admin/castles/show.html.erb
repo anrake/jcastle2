@@ -1,0 +1,11 @@
+
+<% if @castle.approved? %>APPROVED<% else %>NOT<% end %>
+
+<table>
+	<% for column in Castle.content_columns %>
+		<tr>
+			<td><b><%= column.name %>:</b></td><td><%= @castle.send(column.name) %></td>
+		</tr>
+	<% end %>
+</table>
+	
