@@ -1,9 +1,5 @@
 class CastlesController < ApplicationController
-<<<<<<< HEAD
   before_action :set_castle, only: [:show, :edit, :update]
-=======
-  before_action :set_castle, only: [:show, :edit, :update, :destroy]
->>>>>>> e1055ad651aab841ba4bd0a57de8ea13256ba552
 
   # GET /castles
   # GET /castles.json
@@ -14,10 +10,7 @@ class CastlesController < ApplicationController
   # GET /castles/1
   # GET /castles/1.json
   def show
-<<<<<<< HEAD
     @castle = Castle.find(params[:id])
-=======
->>>>>>> e1055ad651aab841ba4bd0a57de8ea13256ba552
   end
 
   # GET /castles/new
@@ -49,7 +42,7 @@ class CastlesController < ApplicationController
   # PATCH/PUT /castles/1.json
   def update
     respond_to do |format|
-      if @castle.update(castle_params)
+      if @castle.update(params)
         format.html { redirect_to @castle, notice: 'Castle was successfully updated.' }
         format.json { head :no_content }
       else
